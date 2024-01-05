@@ -29,7 +29,7 @@ namespace BinaryGap
     {
         static void Main(string[] args)
         {
-            int number = 1610612737;
+            int number = 328;
             AnotherSolution sol = new AnotherSolution();
             Console.WriteLine(sol.Solution(number));
             MySolution sol2 = new MySolution();
@@ -71,35 +71,25 @@ namespace BinaryGap
         public int binaryGap(int number)
         {
             string binaryNumber = Convert.ToString(number, 2);
-
-            var spNumber = new ArrayList();
-            var test = new List<int>();
-            string[] splitNumber = binaryNumber.Split('1');
+           
+            var numberOne = new List<int>();
             int value = 0;
 
-            foreach (var num in splitNumber)
+            foreach (var num in binaryNumber)
             {
-                if (num != "")
-                    spNumber.Add(num);
-            }
-
-
-            //Checking if the length is bigger than 1 and if is not null
-            if (spNumber == null || spNumber.Count < 1)
-            {
-                return 0;
-            }
-            else
-            {
-                foreach (var num in spNumber)
+                if(num.Equals('0'))
                 {
-                    value = num.ToString().Length;
-                    test.Add(value);
+                    value += 1;
                 }
-                return test.Max();
+                else
+                {
+                    numberOne.Add(value);
+                    value = 0;
+                }
             }
 
-
+     
+            return numberOne.Max();
         }
     }
 }
